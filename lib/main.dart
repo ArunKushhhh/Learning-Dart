@@ -4,82 +4,30 @@ void main() {
   runApp(const MyApp());
 }
 
-void test() {
-  //Operators
-  final age = 19;
-  final halfOfAge = age / 2;
-  final doubleTheAge = age * 2;
-  print(halfOfAge);
-  print(doubleTheAge);
+void test(List<String>? names) {
+  //?
+  //??= Null over assignment operator
+  //?.
 
-  //list
-  var count = ['one', 'two', 'three'];
-  print(count[0]);
-  print(count.length);
-  count.add("four");
-  print(count);
+  // List<String?>? names = null;
+  // final numberOfNames = names.length;
+  //gives an error because its property cannot be accessed as it may be null.
 
-  //Sets
-  var num = {1, 2, 3, 4};
-  num.add(5);
-  print(num);
+  //TYPE PROMOTION
 
-  //Map
-  var person = {'name': "Arun", 'age': 19};
-  person['name'] = "Kushwaha Ji";
-  print(person);
-
-  //Null Safety
-  var name = '';
-  print(name);
-  //Making a type nullable
-  const String? name2 = null;
-  //but the value of this constant cannot be updated because of the reserved keyword "const" that has been used
-  String? name3 = null;
-  name3 = "Kushwaha";
-
-  //we cannot assign "null" value to any operator until we make it ready to accept null value
-  //int age2 = 19;
-  // age2= null;
-
-  int? age2 = 19;
-  age2 = null;
-
-  // List<String> words = ['one', 1]; //this gives an error as strign list cannot contain integers
-  List<String>? words = null; //nullable list
-  List<String?>? letters = ['one', null]; //nullable list of nullable strings
-
-  const String? firstname = null;
-  const String? middlename = 'Kumar';
-  const String? lastname = 'Kushwaha';
-
-  //conventional value to check and terminate the condition when the system finds first non null value
-  // if (firstname != null) {
-  //   print("firstname is not null");
-  // } else if (middlename != null) {
-  //   print("middlename is not null");
-  // } else if (lastname != null) {
-  //   print("lastname is not null");
+  // List<String?>? names = null;
+  // final numberOfNames = names.length;
+  //old way
+  // if (names != null) {
+  //   print("the length of names is ${names.length}");
+  // } else {
+  //   print("List is of the type null");
   // }
 
-  //New/Better way to write the same statement is:
-  //What happens here is that ?? is an infix operator.. so if the left hand side value of the operator is null, the right hand value is never executed
-  //However, if we make the middlename null as well, then the firstNonNullValue variable will take lastname as its value and store it
-  // const firstNonNullValue = firstname ?? middlename ?? lastname;
-  // return(firstNonNullValue);
-  String? nonNullNames(
-      String? firstname, String? middlename, String? lastname) {
-    final firstNonNullValue = firstname ?? middlename ?? lastname;
-    print(firstNonNullValue);
-    return (firstNonNullValue);
-  }
-
-  //null over assignment operator
-  void test(String? firstname, String? middlename, String? lastname) {
-    String? name = firstname;
-    name ??= lastname;
-    print(name);
-  }
+  //new way: using ?
+  final length = names?.length;
+  print(length);
+  //Similarly we can also access other properties as well by using the ? sign
 }
 
 class MyApp extends StatelessWidget {
@@ -88,6 +36,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    test(null);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
