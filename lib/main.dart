@@ -4,30 +4,35 @@ void main() {
   runApp(const MyApp());
 }
 
-void test(List<String>? names) {
-  //?
-  //??= Null over assignment operator
-  //?.
+enum PersonProperties { firstname, lastname, age }
 
-  // List<String?>? names = null;
-  // final numberOfNames = names.length;
-  //gives an error because its property cannot be accessed as it may be null.
+enum AnimalType { cat, panda, bunny }
 
-  //TYPE PROMOTION
-
-  // List<String?>? names = null;
-  // final numberOfNames = names.length;
-  //old way
-  // if (names != null) {
-  //   print("the length of names is ${names.length}");
-  // } else {
-  //   print("List is of the type null");
+void test(AnimalType animalType) {
+  // if (animalType == AnimalType.cat) {
+  //   print("Oh!! I love Cats");
+  // } else if (animalType == AnimalType.panda) {
+  //   print("Pandas are so cute");
+  // } else if(animalType == AnimalType.bunny) {
+  //   print("i wish I had a bunny");
   // }
 
-  //new way: using ?
-  final length = names?.length;
-  print(length);
-  //Similarly we can also access other properties as well by using the ? sign
+  //Switch Statements
+  switch (animalType) {
+    case AnimalType.cat:
+      print("Oh! I love cats");
+      return;
+    //break;
+    case AnimalType.panda:
+      print("Pandas are so cute");
+      break;
+    case AnimalType.bunny:
+      print("I wish I had a bunny");
+      break;
+    default:
+      print('Default Statement');
+      break;
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +41,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    test(null);
+    test(AnimalType.panda);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
