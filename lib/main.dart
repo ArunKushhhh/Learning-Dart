@@ -4,36 +4,45 @@ void main() {
   runApp(const MyApp());
 }
 
-enum PersonProperties { firstname, lastname, age }
+// const firstName = "";
+// const lastName = "";
 
-enum AnimalType { cat, panda, bunny }
+// void run() {
 
-void test(AnimalType animalType) {
-  // if (animalType == AnimalType.cat) {
-  //   print("Oh!! I love Cats");
-  // } else if (animalType == AnimalType.panda) {
-  //   print("Pandas are so cute");
-  // } else if(animalType == AnimalType.bunny) {
-  //   print("i wish I had a bunny");
-  // }
+// }
 
-  //Switch Statements
-  switch (animalType) {
-    case AnimalType.cat:
-      print("Oh! I love cats");
-      return;
-    //break;
-    case AnimalType.panda:
-      print("Pandas are so cute");
-      break;
-    case AnimalType.bunny:
-      print("I wish I had a bunny");
-      break;
-    default:
-      print('Default Statement');
-      break;
+// void breathe(){
+
+// }
+
+// void test() {
+//   //Classes
+//   //the grouping of all thr above specified things is done with a class
+
+// }
+
+//inside a class, we can declare several functions
+class Person {
+  void run() {
+    print("Running");
+  }
+  void breathe() {
+    print("breathing");
   }
 }
+//instantiation of the class
+//to use the class we need to create an instance(asking for a copy of the class) of the class
+void test() {
+  final person = Person();
+  //invoking a fucntion inside a class
+  person.run();
+  person.breathe();
+
+  //Instance members cannot be accessed statically
+  //for e.g.
+  // Person.breathe(); 
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,7 +50,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    test(AnimalType.panda);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
